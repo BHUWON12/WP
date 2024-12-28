@@ -1,0 +1,27 @@
+<html>
+<head>
+<title>sum of first n natural numbers </title>
+</head>
+<body>
+<h2>sum of N natural Numbers</h2>
+<p>Enter the N natural Numbers</p>
+<input type="number" id="number">
+<button onlcick="calculateSum()"> calculateSum</button>
+<p id="result"></p>
+<script>
+function calculateSum(){
+var n= document.getElementById('number').value;
+if(n<=0)
+{
+alert('enter an valid number');
+}
+n=Number(n);
+var sum=(n*(n+1))/2;
+let result=document.getElementById('result');
+result.innerHTML=`sum of ${n} natural number is ${sum}`
+
+
+}
+</script>
+</body>
+</html>

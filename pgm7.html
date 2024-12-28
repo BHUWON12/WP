@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Employee info
+        </title>
+
+    </head>
+    <body>
+        <h2>employee info</h2>
+        <form action="">
+            Name: <input type="text" id="name"><br>
+            Basic Salary: <input type="number" id="salarypct"><br>
+            HRA pct: <input type="number" id="hrapct"><br>
+            DA pct: <input type="number" id="dapct"><br>
+            TAX pct: <input type="number" id="taxpct"><br>
+            <button id="button" onclick="CalculateSalary(); return false;"> calculate</button>
+
+        </form>
+        <h3>DA: <span id="da"></span></h3>
+        <h3>HRA: <span id="hra"></span></h3>
+        <h3>PF: <span id="pf"></span></h3>
+        <h3>TAX: <span id="tax"></span></h3>
+        <h3>GrossPAY: <span id="gross"></span></h3>
+        <h3>Deduction: <span id="deduction"></span></h3>
+        <h3> NET pay: <span id="netpay"></span></h3>
+
+        <script>
+            function CalculateSalary(){
+                var Basicsalary=parseFloat(document.getElementById('salarypct').value);
+                var hrapct=parseFloat(document.getElementById('hrapct').value);
+                var dapct=parseFloat(document.getElementById("dapct").value);
+                var hrapct=parseFloat(document.getElementById("hrapct").value);
+                var taxpct=parseFloat(document.getElementById("taxpct").value);
+
+            if(isNaN(Basicsalary)||isNaN(hrapct)||isNaN(dapct))    
+            {
+                alert('Enter the valid values');
+                return;
+            }
+
+            var da=(dapct/100)*Basicsalary;
+            var hra=(hrapct/100)*Basicsalary;
+            var pf=0.12 * Basicsalary;
+            var tax=(taxpct/100)*Basicsalary;
+            var gross=Basicsalary+da+hra;
+            var deduction=pf+tax;
+            var netpay=gross-deduction;
+            document.getElementById('da').innerHTML=da.toFixed(2);
+            document.getElementById('hra').innerHTML=hra.toFixed(2);
+            document.getElementById('pf').innerHTML=pf;
+            document.getElementById('tax').innerHTML=tax;
+            document.getElementById('gross').innerHTML=gross;
+            document.getElementById('deduction').innerHTML=deduction;
+            document.getElementById('netpay').innerHTML=netpay;
+
+
+            }
+
+        </script>
+    </body>
+</html>

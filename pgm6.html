@@ -1,0 +1,62 @@
+<html>
+<head>
+    <title>Student Information</title>
+</head>
+<body>
+    <h2>Student Information</h2>
+    <form>
+        Name: <input type="text" id="name" name="name"><br><br>
+        Math score: <input type="number" id="math" name="math"><br><br>
+        Science score: <input type="number" id="science" name="science"><br><br>
+        English score: <input type="number" id="english" name="english"><br><br>
+        <input type="button" value="Calculate" onclick="calculateResults()">
+    </form>
+
+    <h3>Results:</h3>
+    <p id="total">Total Score: </p>
+    <p id="average">Average Score: </p>
+    <p id="result">Result: </p>
+    <p id="grade">Grade: </p>
+
+    <script>
+        function calculateResults() {
+            // Retrieve input values and convert to numbers
+            var math = parseFloat(document.getElementById('math').value);
+            console.log(typeof(math))
+            var science = parseFloat(document.getElementById('science').value) ;
+            var english = parseFloat(document.getElementById('english').value);
+
+            // Check if inputs are valid
+            if (isNaN(math) || isNaN(science) || isNaN(english)) {
+                alert('Please enter valid numbers for all scores.');
+                return;
+            }
+
+            // Calculate total, average, and result
+            var total = math + science + english;
+            var average = total / 3;
+            var result = average >= 40 ? 'Pass' : 'Fail';
+
+            // Determine grade
+            var grade;
+            if (average >= 90) {
+                grade = 'A';
+            } else if (average >= 80) {
+                grade = 'B';
+            } else if (average >= 70) {
+                grade = 'C';
+            } else if (average >= 60) {
+                grade = 'D';
+            } else {
+                grade = 'F';
+            }
+
+            // Display results
+            document.getElementById('total').innerText = "Total Score: " + total;
+            document.getElementById('average').innerText = "Average Score: " + average.toFixed(2);
+            document.getElementById('result').innerText = "Result: " + result;
+            document.getElementById('grade').innerText = "Grade: " + grade;
+        }
+    </script>
+</body>
+</html>
